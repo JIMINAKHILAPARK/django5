@@ -1,0 +1,253 @@
+{% extends 'Navbar.html' %}
+{% load static %}
+<html lang="en">
+{% block body %}
+
+<style>
+  /* Add your custom styles here */
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+  }
+
+  .carousel-inner {
+    height: 400px;
+  }
+
+  .carousel-item img {
+    object-fit: cover;
+    height: 100%;
+  }
+
+  .carousel-caption {
+    background: rgba(0, 0, 0, 0.7);
+    color: #ffffff;
+    padding: 20px;
+  }
+
+  .travel-destination {
+    margin-top: 30px;
+  }
+
+  .travel-destination img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .travel-destination img:hover {
+    transform: scale(1.05);
+  }
+
+  .destination-details {
+    text-align: left;
+    margin-top: 20px;
+    display: none;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .package-details {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+
+  .package-details h4 {
+    color: #007bff;
+  }
+
+  .learn-more-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  .learn-more-btn:disabled {
+    background-color: #b0b0b0;
+    cursor: not-allowed;
+  }
+
+  .learn-more-btn:hover {
+    background-color: #0056b3;
+  }
+</style>
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'images/c3.jpg' %}" class="d-block w-100 img-fluid" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h2>Explore Beautiful Destinations</h2>
+        <p>Discover the wonders of the world with our travel packages.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/c1.jpeg' %}" class="d-block w-100 img-fluid" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h2>Adventure Awaits</h2>
+        <p>Embark on exciting journeys to breathtaking landscapes.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/c2.jpg' %}" class="d-block w-100 img-fluid" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h2>Experience the Extraordinary</h2>
+        <p>Create memories that last a lifetime with our travel experiences.</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<div class="container travel-destination">
+  <div class="row">
+    <div class="col-md-4">
+      <img src="{% static 'images/paris.jpg' %}" alt="Paris, France" class="img-fluid" onclick="showDetails('details-paris')">
+      <h2>Paris, France</h2>
+      <button class="learn-more-btn" onclick="openDetails('Paris, France')">Learn More 🗼</button>
+    </div>
+    <div class="col-md-4">
+      <img src="{% static 'images/tokyo.jpg' %}" alt="Tokyo, Japan" class="img-fluid" onclick="showDetails('details-tokyo')">
+      <h2>Tokyo, Japan</h2>
+      <button class="learn-more-btn" onclick="openDetails('Tokyo, Japan')">Learn More 🏯</button>
+    </div>
+    <div class="col-md-4">
+      <img src="{% static 'images/newyork.jpg' %}" alt="New York, USA" class="img-fluid" onclick="showDetails('details-newyork')">
+      <h2>New York, USA</h2>
+      <button class="learn-more-btn" onclick="openDetails('New York, USA')">Learn More 🗽</button>
+    </div>
+    <!-- Add Seoul here -->
+    <div class="col-md-4">
+      <img src="{% static 'images/seoul.jpg' %}" alt="Seoul, South Korea" class="img-fluid" onclick="showDetails('details-seoul')">
+      <h2>Seoul, South Korea</h2>
+      <button class="learn-more-btn" onclick="openDetails('Seoul, South Korea')">Learn More 🏞️</button>
+    </div>
+  </div>
+
+  <!-- Details Section -->
+  <div id="details-paris" class="destination-details">
+    <h3>Paris, France</h3>
+    <div class="package-details">
+      <h4>Travel Package:</h4>
+      <p>Explore the romantic city of Paris with our exclusive travel package. Enjoy a guided tour of iconic landmarks, including the Eiffel Tower and Louvre Museum.</p>
+    </div>
+    <div class="package-details">
+      <h4>Popular Food:</h4>
+      <p>Indulge in delicious French cuisine, including croissants, escargot, and macarons.</p>
+    </div>
+    <div class="package-details">
+      <h4>Traditions:</h4>
+      <p>Experience the charm of Parisian culture through art,
+  </div>
+  <div class="package-details">
+    <h4>Technology:</h4>
+    <p>Discover the latest in French technology and innovation during your stay.</p>
+  </div>
+</div>
+<div id="details-tokyo" class="destination-details">
+  <h3>Tokyo, Japan</h3>
+  <div class="package-details">
+    <h4>Travel Package:</h4>
+    <p>Embark on an adventure in the vibrant city of Tokyo with our special travel package. Discover the fusion of tradition and modernity.</p>
+  </div>
+  <div class="package-details">
+    <h4>Popular Food:</h4>
+    <p>Indulge in authentic Japanese cuisine, from sushi and ramen to tempura. Experience a culinary journey in Tokyo.</p>
+  </div>
+  <div class="package-details">
+    <h4>Traditional Arts:</h4>
+    <p>Witness traditional Japanese arts, such as tea ceremonies, ikebana, and kabuki performances.</p>
+  </div>
+  <div class="package-details">
+    <h4>Modern Marvels:</h4>
+    <p>Explore Tokyo's modern architecture, cutting-edge technology, and vibrant pop culture scenes.</p>
+  </div>
+</div>
+<div id="details-newyork" class="destination-details">
+  <h3>New York, USA</h3>
+  <div class="package-details">
+    <h4>Travel Package:</h4>
+    <p>Discover the city that never sleeps with our New York travel package. From Broadway shows to iconic landmarks, experience it all.</p>
+  </div>
+  <div class="package-details">
+    <h4>Cultural Melting Pot:</h4>
+    <p>Immerse yourself in the diverse cultures and cuisines that make New York a true melting pot of experiences.</p>
+  </div>
+  <div class="package-details">
+    <h4>Landmarks and Attractions:</h4>
+    <p>Visit famous landmarks such as Times Square, Central Park, and the Statue of Liberty. Enjoy breathtaking views of the city.</p>
+  </div>
+  <div class="package-details">
+    <h4>Nightlife and Entertainment:</h4>
+    <p>Experience the vibrant nightlife, Broadway shows, and live entertainment that make New York a city of endless possibilities.</p>
+  </div>
+</div>
+<!-- Add Seoul Details Here -->
+<div id="details-seoul" class="destination-details">
+  <h3>Seoul, South Korea</h3>
+  <div class="package-details">
+    <h4>Travel Package:</h4>
+    <p>Discover the dynamic city of Seoul with our exciting travel package. Immerse yourself in Korean culture, history, and modern attractions.</p>
+  </div>
+  <div class="package-details">
+    <h4>Traditional Cuisine:</h4>
+    <p>Savor authentic Korean dishes, including kimchi, bulgogi, and bibimbap. Experience the rich flavors of Korean cuisine.</p>
+  </div>
+  <div class="package-details">
+    <h4>Cultural Heritage:</h4>
+    <p>Explore Seoul's cultural heritage through visits to palaces, temples, and traditional markets.</p>
+  </div>
+  <div class="package-details">
+    <h4>Modern Wonders:</h4>
+    <p>Discover the modern side of Seoul with its futuristic architecture, K-pop culture, and vibrant entertainment districts.</p>
+  </div>
+</div>
+</div>
+
+<script>
+function showDetails(destinationId) {
+  // Hide all destination details
+  var detailsElements = document.getElementsByClassName('destination-details');
+  for (var i = 0; i < detailsElements.length; i++) {
+    detailsElements[i].style.display = 'none';
+  }
+
+  // Show the selected destination details
+  var selectedDetails = document.getElementById(destinationId);
+  if (selectedDetails) {
+    selectedDetails.style.display = 'block';
+  }
+}
+
+function openDetails(destination) {
+  // Implement your logic to open details page for the selected destination
+  // You can use window.location.href or any other method based on your requirements
+  console.log('Open details for: ' + destination);
+}
+</script>
+
+{% endblock %}
+</html>

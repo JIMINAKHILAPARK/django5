@@ -1,0 +1,19 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Sender</title>
+</head>
+<body>
+    <h1>Send Email</h1>
+    <form action="{% url 'send_email' %}" method="post">
+        {% csrf_token %}
+        <label for="recipient_email">Recipient Email:</label>
+        <input type="email" id="recipient_email" name="recipient_email">
+        <button type="submit">Send Email</button>
+    </form>
+</body>
+</html>

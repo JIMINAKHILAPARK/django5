@@ -1,0 +1,81 @@
+{% extends 'Navbar.html' %}
+{% load static %}
+
+<html lang="en" style="background-image: url('{% static 'images/background.jpg' %}'); background-size: cover; height: 100%;">
+
+{% block body %}
+  <div class="container-fluid" style="background: none;">
+    <div class="row">
+      <div align="center" class="col" style="background: rgba(255, 255, 255, 0.7); padding: 20px;">
+        <h1 style="font-family: 'Your Chosen Font'; color: #333;">Welcome to Travel Tourism and Management</h1>
+      </div>
+    </div>
+  </div>
+  <div class="container" style="padding: 50px 0; background: rgba(255, 255, 255, 0.7);">
+    <div class="row">
+      <!-- Existing Cards -->
+      <div class="col-md-6">
+        <div class="card border-primary border-8" style="width: 100%; margin-bottom: 20px;">
+          <img src="{% static 'images/seoul.jpg' %}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text">Seoul, South Korea</p>
+            <p class="card-text">Explore the vibrant culture and modern attractions of Seoul.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card border-primary border-8" style="width: 100%; margin-bottom: 20px;">
+          <img src="{% static 'images/india.jpg' %}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text">Delhi, India</p>
+            <p class="card-text">Experience the rich history and diverse traditions of Delhi.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card border-primary border-8" style="width: 100%; margin-bottom: 20px;">
+          <img src="{% static 'images/paris.jpg' %}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text">Paris, France</p>
+            <p class="card-text">Discover the romantic charm and iconic landmarks of Paris.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card border-primary border-8" style="width: 100%; margin-bottom: 20px;">
+          <img src="{% static 'images/tokyo.jpg' %}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text">Tokyo, Japan</p>
+            <p class="card-text">Immerse yourself in the futuristic technology and traditional culture of Tokyo.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- New Card for Ayodhya -->
+      <div class="col-md-6">
+        <div class="card border-primary border-8" style="width: 100%; margin-bottom: 20px;">
+          <img src="{% static 'images/rama.jpg' %}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text">Ayodhya, India</p>
+            <p class="card-text">Visit the sacred city with historical significance and cultural heritage.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br><br><br>
+
+  <center>
+    <div class="d-grid gap-2 col-6 mx-auto">
+   <a href="{% url 'travelpackages' %}"> Link to Travel Packages</a>
+      <p style="font-size: 16px; color: #555;">Discover exciting travel options for your next adventure!</p>
+    </div>
+  </center>
+
+  <br><br><br><br><br><br>
+{% endblock %}
+</html>

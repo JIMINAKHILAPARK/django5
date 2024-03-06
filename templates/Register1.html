@@ -1,0 +1,51 @@
+{% extends 'Navbar.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        button {
+            background-color: #28a745;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+{% block body %}
+  <div class="container">
+    <h2 class="text-center">Register</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-success btn-block">Register</button>
+    </form>
+    {% if username_exists %}
+      <div class="alert alert-warning mt-3" role="alert">
+        The username already exists. <a href="{% url 'login' %}">Login</a> instead.
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}
+
+</body>
+</html>
